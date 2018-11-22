@@ -86,6 +86,16 @@
             label, input, small {
               font-weight: 1000 !important;
             }
+            .top-info{
+              position:absolute;
+              top:50px;
+              left:30px;
+              text-align: left;
+            }
+            .top-info p{
+              font-weight: 510 !important;
+              color:#c3c0c0;
+            }
         </style>
     </head>
     <body>
@@ -93,6 +103,11 @@
             <div class="content" style="width:100%; padding-top:50px">
                 <div class="top-left links">
                   <a href="{{ url('/') }}">Home</a> / <a href="{{ url('/linuxone') }}" style="font-weight:bold; color:#000">LinuxOne</a>
+                </div>
+                <div class="top-info">
+                  <p>Nodejs Backend is running on http://108.161.151.117:3033</p>
+                  <p>Golang Backend is running on http://88.208.216.161:3033</p>
+                  <p>Erlang Backend is running on http://18.219.10.175:8080</p>
                 </div>
                 <div class="row" style="padding-top:10px">
                     <img class="card-img-top" src="/images/linuxone.png" alt="Card image cap">
