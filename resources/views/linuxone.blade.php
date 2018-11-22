@@ -136,6 +136,9 @@
                     <div class="row" style="padding-top:30px">
                       <button class="btn btn-primary" disabled><img src="/images/cobol.png" style="width:35px; margin-right:5px" /> Call Api From COBOL</button>
                     </div>
+                    <div class="row" style="padding-top:30px;padding-bottom:30px">
+                      <button class="btn btn-primary" disabled><img src="/images/pl.png" style="width:35px; margin-right:5px" /> Call Api From PL/1</button>
+                    </div>
                   </div>
                   <div class="col-sm-8" style="text-align:left;padding: 0px 50px 0px 20px">
                     <div class="row">
@@ -147,7 +150,7 @@
 
                       <div class="form-group" style="max-width:800px; padding-top:30px">
                         <label for="label_api_url">Result <span id="result-status"></span></label>
-                        <textarea class="form-control" id="api_result" name="api_result" style="min-height:300px;font-weight:bold" disabled></textarea>
+                        <textarea class="form-control" id="api_result" name="api_result" style="min-height:350px;font-weight:bold" disabled></textarea>
                       </div>
                     </div>
                   </div>
