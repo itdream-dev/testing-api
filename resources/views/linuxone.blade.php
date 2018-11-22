@@ -160,7 +160,7 @@
                     $('#api_result').html(JSON.stringify(result));
                     $('#result-status').html('( SUCCESS )')
                     $('#result-status').css('color', '#0f0');
-                
+
                 } else {
                   $('#result-status').html('( FAILED )')
                   $('#result-status').css('color', '#f00');
@@ -184,20 +184,6 @@
               "api_url": api_url
             }
 
-            // $.post('http://88.208.216.161:3033/api/v1/blockchain/callingapi', data, function(res ,status){
-            //     result = res;
-            //     console.log(res, status);
-            //     console.log('result', result);
-            //     if (status == 'success'){
-            //         $('#api_result').html(JSON.stringify(result));
-            //         $('#result-status').html('( SUCCESS )')
-            //         $('#result-status').css('color', '#0f0');
-            //     } else {
-            //       $('#result-status').html('( FAILED )')
-            //       $('#result-status').css('color', '#f00');
-            //       $('#api_result').html(res);
-            //     }
-            // })
 
             $.ajax({
               url: 'http://88.208.216.161:3033/api/v1/blockchain/callingapi',
@@ -205,6 +191,7 @@
               dataType: 'json',
               contentType: 'application/json',
               success: function (res) {
+                console.log(res);
                 $('#api_result').html(JSON.stringify(res));
                 $('#result-status').html('( SUCCESS )')
                 $('#result-status').css('color', '#0f0');
