@@ -121,14 +121,14 @@
                   <div class="col-sm-8" style="text-align:left;padding: 0px 50px 0px 20px">
                     <div class="row">
                       <div class="form-group" style="max-width:800px">
-                        <label for="label_api_url">Blockchain Api URL (ex: http://148.100.98.30:3000/api/org.acme.sample.Sensor/1 )</label>
-                        <input type="text" class="form-control" id="api_url" name="api_url" placeholder="Enter api url">
+                        <label for="label_api_url">Blockchain Composer Rest Api URL (ex: http://148.100.98.30:3000/api/org.acme.sample.Sensor/1 )</label>
+                        <input type="text" class="form-control" id="api_url" name="api_url" placeholder="Enter api url" value="http://148.100.98.30:3000/api/org.acme.sample.Sensor/1">
                         <small id="url_help" class="form-text">You can see api lists on http://148.100.98.30:3000/explorer/ (linuone composer rest server)</small>
                       </div>
 
                       <div class="form-group" style="max-width:800px; padding-top:30px">
                         <label for="label_api_url">Result <span id="result-status"></span></label>
-                        <textarea class="form-control" id="api_result" name="api_result" style="min-height:300px;font-weight:bold"></textarea>
+                        <textarea class="form-control" id="api_result" name="api_result" style="min-height:300px;font-weight:bold" disabled></textarea>
                       </div>
                     </div>
                   </div>
