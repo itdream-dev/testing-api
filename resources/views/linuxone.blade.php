@@ -156,16 +156,11 @@
                 console.log(res, status);
                 console.log('result', result);
                 if (status == 'success'){
-                  if (result.status == 'success'){
+
                     $('#api_result').html(JSON.stringify(result));
                     $('#result-status').html('( SUCCESS )')
                     $('#result-status').css('color', '#0f0');
-                  } else {
-                    console.log('FAILED');
-                    $('#api_result').html(JSON.stringify(result));
-                    $('#result-status').html('( FAILED )')
-                    $('#result-status').css('color', '#f00');
-                  }
+                
                 } else {
                   $('#result-status').html('( FAILED )')
                   $('#result-status').css('color', '#f00');
