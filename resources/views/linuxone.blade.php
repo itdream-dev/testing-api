@@ -51,7 +51,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 60px;
             }
 
             .links > a {
@@ -94,9 +94,13 @@
                 <div class="top-left links">
                   <a href="{{ url('/') }}">Home</a> / <a href="{{ url('/linuxone') }}" style="font-weight:bold; color:#000">LinuxOne</a>
                 </div>
-                <div class="title m-b-md row" style="padding-top:0px; margin-top:0px">
-                    Linuxone
+                <div class="row" style="padding-top:10px">
+                    <img class="card-img-top" src="/images/linuxone.png" alt="Card image cap">
                 </div>
+                <div class="title m-b-md row" style="padding-top:0px; margin-top:15px">
+                    Linuxone HyperLeger Fabric
+                </div>
+
                 <div class="row" style="padding-top:30px">
                   <div class="col-sm-4">
                     <div class="row" style="">
