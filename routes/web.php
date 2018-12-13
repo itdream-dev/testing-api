@@ -23,3 +23,11 @@ Route::get('/linuxone', function () {
 Route::get('/bluemix', function () {
     return view('bluemix');
 });
+
+Route::get('/welcome_corda', function () {
+    return view('welcome_corda');
+});
+
+Route::get('/corda', function () {
+    return view('corda');
+});
