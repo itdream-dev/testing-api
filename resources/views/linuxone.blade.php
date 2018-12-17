@@ -128,6 +128,9 @@
                       <button class="btn btn-primary" onclick="callErlang()"><img src="/images/erlang.png" style="width:35px; margin-right:5px"/> Call Api From Erlang</button>
                     </div>
                     <div class="row" style="padding-top:30px">
+                      <button class="btn btn-primary" onclick="callJava()" disabled style="height:58px"><img src="/images/java.jpg" style="width:35px; margin-right:5px"/> Call Api From Java</button>
+                    </div>
+                    <div class="row" style="padding-top:30px">
                       <button class="btn btn-primary" disabled><img src="/images/cics.png" style="width:35px; margin-right:5px" /> Call Api From CICS </button>
                     </div>
                     <div class="row" style="padding-top:30px">
@@ -143,14 +146,19 @@
                   <div class="col-sm-8" style="text-align:left;padding: 0px 50px 0px 20px">
                     <div class="row">
                       <div class="form-group" style="max-width:800px">
-                        <label for="label_api_url">Blockchain Composer Rest Api URL (ex: http://148.100.98.30:3000/api/org.acme.sample.Sensor/1 )</label>
-                        <input type="text" class="form-control" id="api_url" name="api_url" placeholder="Enter api url" value="http://148.100.98.30:3000/api/org.acme.sample.Sensor/1">
+                        <label for="label_api_url">Blockchain Composer Rest Api URL (ex: http://148.100.98.30:3000/api/system/historian (transaction lists))</label>
+                        <input type="text" class="form-control" id="api_url" name="api_url" placeholder="Enter api url" value="http://148.100.98.30:3000/api/system/historian">
                         <small id="url_help" class="form-text">You can see api lists on http://148.100.98.30:3000/explorer/ (linuone composer rest server)</small>
                       </div>
 
                       <div class="form-group" style="max-width:800px; padding-top:30px">
                         <label for="label_api_url">Result <span id="result-status"></span></label>
                         <textarea class="form-control" id="api_result" name="api_result" style="min-height:350px;font-weight:bold" disabled></textarea>
+                      </div>
+
+                      <div id="transaction-box" class="form-group" style="max-width:800px; display:none; padding-top:30px">
+                        <label for="label_api_url">Extrat Transaction Ids</label>
+                        <label class="form-control" id="transactions" name="transactions" style="min-height:350px;font-weight:bold"></label>
                       </div>
                     </div>
                   </div>
@@ -178,7 +186,24 @@
                 console.log(res, status);
                 console.log('result', result);
                 if (status == 'success'){
+                    res = JSON.stringify(result);
 
+                    if (res.includes('transactionId')){
+                        transactionlists = [];
+                        res = res.split('"transactionId":"');
+                        for (i in res){
+                          if (i == 0) continue;
+                          a = res[i].split('","transactionType"')[0];
+                          transactionlists.push(a);
+                        }
+                        console.log('transactionlists',transactionlists);
+                        $('#transaction-box').show();
+                        html = '';
+                        for (i in transactionlists){
+                          html = html + '<p style="color:red">'+transactionlists[i]+'</p>';
+                        }
+                        $('#transactions').html(html);
+                    }
                     $('#api_result').html(JSON.stringify(result));
                     $('#result-status').html('( SUCCESS )')
                     $('#result-status').css('color', '#0f0');
@@ -214,9 +239,28 @@
               contentType: 'application/json',
               success: function (res) {
                 console.log(res);
+                //res1 = JSON.stringify(res);
                 $('#api_result').html(JSON.stringify(res));
                 $('#result-status').html('( SUCCESS )')
                 $('#result-status').css('color', '#0f0');
+
+                if (res.includes('transactionId')){
+                    transactionlists = [];
+                    res = res.split('"transactionId":"');
+                    for (i in res){
+                      if (i == 0) continue;
+                      a = res[i].split('","transactionType"')[0];
+                      transactionlists.push(a);
+                    }
+                    console.log('transactionlists',transactionlists);
+                    $('#transaction-box').show();
+                    html = '';
+                    for (i in transactionlists){
+                      html = html + '<p style="color:red">'+transactionlists[i]+'</p>';
+                    }
+                    $('#transactions').html(html);
+                }
+
               },
               data: JSON.stringify(data)
             });
@@ -241,6 +285,24 @@
               console.log(res, status);
               result= res;
               if (status == 'success'){
+                res = JSON.stringify(res);
+
+                if (res.includes('transactionId')){
+                    transactionlists = [];
+                    res = res.split('"transactionId":"');
+                    for (i in res){
+                      if (i == 0) continue;
+                      a = res[i].split('","transactionType"')[0];
+                      transactionlists.push(a);
+                    }
+                    console.log('transactionlists',transactionlists);
+                    $('#transaction-box').show();
+                    html = '';
+                    for (i in transactionlists){
+                      html = html + '<p style="color:red">'+transactionlists[i]+'</p>';
+                    }
+                    $('#transactions').html(html);
+                }
                   $('#api_result').html(JSON.stringify(result));
                   $('#result-status').html('( SUCCESS )')
                   $('#result-status').css('color', '#0f0');

@@ -20,7 +20,7 @@ Route::get('/linuxone', function () {
     return view('linuxone');
 });
 
-Route::get('/bluemix', function () {
+Route::get('/ibm_cloud', function () {
     return view('bluemix');
 });
 
