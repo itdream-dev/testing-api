@@ -51,7 +51,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 60px;
             }
 
             .links > a {
@@ -77,41 +77,292 @@
               font-size:15px;
               padding-top:20px
             }
+            button {
+              font-weight: bold !important;
+              font-size:15px;
+              text-align: left !important;
+              width:215px;
+            }
+            label, input, small {
+              font-weight: 1000 !important;
+            }
+            .top-info{
+              position:absolute;
+              top:50px;
+              left:30px;
+              text-align: left;
+            }
+            .top-info p{
+              font-weight: 510 !important;
+              color:#c3c0c0;
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            <div class="content">
+            <div class="content" style="width:100%; padding-top:50px">
                 <div class="top-left links">
-                  <a href="{{ url('/') }}">Home</a> / <a href="{{ url('/linuxone') }}" style="font-weight:bold">LinuxOne</a>
+                  <a href="{{ url('/') }}">Home</a> / <a href="{{ url('/linuxone') }}" style="font-weight:bold; color:#000">IBM Cloud</a>
                 </div>
-                <div class="title m-b-md" style="padding-top:100px">
-                    LinuxOne
+                <div class="top-info">
+                  <p>Nodejs Backend is running on http://108.161.151.117:3033</p>
+                  <p>Golang Backend is running on http://88.208.216.161:3033</p>
+                  <p>Erlang Backend is running on http://18.219.10.175:8080</p>
+                  <p>Java Backend is running on http://18.191.207.249:8080</p>
+                </div>
+                <div class="row" style="padding-top:10px">
+                    <img class="card-img-top" src="/images/linuxone.png" alt="Card image cap">
+                </div>
+                <div class="title m-b-md row" style="padding-top:0px; margin-top:15px">
+                    BlueMix HyperLeger Fabric
                 </div>
 
-                <div class="row">
-                  <div class="col-sm-6" style="justify-content:center;padding:10px 150px">
-                    <div class="card" style="height: 350px; width:300px">
-                      <img class="card-img-top" src="/images/linuxone.png" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">HyperLeger Fabric Blockchain on LINUXONE.</h5>
-                        <!-- <p class="card-text">HyperLeger Fabric Blockchain on LINUXONE.</p> -->
-                        <a href="#" class="btn btn-primary" style="margin-top:30px">Go to Test</a>
-                      </div>
+                <div class="row" style="padding-top:30px">
+                  <div class="col-sm-4">
+                    <div class="row" style="">
+                      <button class="btn btn-primary" onclick="callNodjs()"><img src="/images/nodejs.png" style="width:35px; margin-right:5px"/> Call Api From NodeJS</button>
+                    </div>
+                    <div class="row" style="padding-top:30px">
+                      <button class="btn btn-primary" onclick="callGolang()"><img src="/images/golang.png" style="width:35px; margin-right:5px"/> Call Api From Golang</button>
+                    </div>
+                    <div class="row" style="padding-top:30px">
+                      <button class="btn btn-primary" onclick="callErlang()"><img src="/images/erlang.png" style="width:35px; margin-right:5px"/> Call Api From Erlang</button>
+                    </div>
+                    <div class="row" style="padding-top:30px">
+                      <button class="btn btn-primary" onclick="callJava()" style="height:58px"><img src="/images/java.jpg" style="width:35px; margin-right:5px"/> Call Api From Java</button>
+                    </div>
+                    <div class="row" style="padding-top:30px">
+                      <button class="btn btn-primary" disabled><img src="/images/cics.png" style="width:35px; margin-right:5px" /> Call Api From CICS </button>
+                    </div>
+                    <div class="row" style="padding-top:30px">
+                      <button class="btn btn-primary" disabled><img src="/images/ims.png" style="width:35px; margin-right:5px" /> Call Api From IMS</button>
+                    </div>
+                    <div class="row" style="padding-top:30px">
+                      <button class="btn btn-primary" disabled><img src="/images/cobol.png" style="width:35px; margin-right:5px" /> Call Api From COBOL</button>
+                    </div>
+                    <div class="row" style="padding-top:30px;padding-bottom:30px">
+                      <button class="btn btn-primary" disabled><img src="/images/pl.png" style="width:35px; margin-right:5px" /> Call Api From PL/1</button>
                     </div>
                   </div>
+                  <div class="col-sm-8" style="text-align:left;padding: 0px 50px 0px 20px">
+                    <div class="row">
+                      <div class="form-group" style="max-width:800px">
+                        <label for="label_api_url">Blockchain Composer Rest Api URL (ex: http://148.100.98.30:3000/api/system/historian (transaction lists))</label>
+                        <input type="text" class="form-control" id="api_url" name="api_url" placeholder="Enter api url" value="http://148.100.98.30:3000/api/system/historian">
+                        <small id="url_help" class="form-text">You can see api lists on http://148.100.98.30:3000/explorer/ (linuone composer rest server)</small>
+                      </div>
 
-                  <div class="col-sm-6" style="justify-content:center;padding:10px 150px">
-                    <div class="card" style="height: 350px;width:300px">
-                      <img class="card-img-top" src="/images/bluemix.png" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">HyperLeger Fabric Blockchain on IBM BLUEMIX.</h5>
-                        <a href="#" class="btn btn-primary" style="margin-top:30px">Go to Test</a>
+                      <div class="form-group" style="max-width:800px; padding-top:30px">
+                        <label for="label_api_url">Result <span id="result-status"></span></label>
+                        <textarea class="form-control" id="api_result" name="api_result" style="min-height:350px;font-weight:bold" disabled></textarea>
+                      </div>
+
+                      <div id="transaction-box" class="form-group" style="max-width:800px; display:none; padding-top:30px">
+                        <label for="label_api_url">Extract Transaction Ids</label>
+                        <label class="form-control" id="transactions" name="transactions" style="min-height:350px;font-weight:bold"></label>
                       </div>
                     </div>
                   </div>
                 </div>
             </div>
         </div>
+        <script>
+          function callNodjs(){
+            console.log('nodejs');
+            api_url = $('#api_url').val();
+            if (api_url == '') {
+                alert('please input api url!');
+                return;
+            }
+
+            $('#api_result').html('');
+            $('#result-status').html('');
+            $('#result-status').css('color', '#000');
+            data = {
+              api_url: api_url
+            }
+
+            $.post('http://108.161.151.117:3033/api/calling_api_from_nodejs', data, function(res ,status){
+                result = res.res;
+                console.log(res, status);
+                console.log('result', result);
+                if (status == 'success'){
+                    res = JSON.stringify(result);
+
+                    if (res.includes('transactionId')){
+                        transactionlists = [];
+                        res = res.split('"transactionId":"');
+                        for (i in res){
+                          if (i == 0) continue;
+                          a = res[i].split('","transactionType"')[0];
+                          transactionlists.push(a);
+                        }
+                        console.log('transactionlists',transactionlists);
+                        $('#transaction-box').show();
+                        html = '';
+                        for (i in transactionlists){
+                          html = html + '<p style="color:red">'+transactionlists[i]+'</p>';
+                        }
+                        $('#transactions').html(html);
+                    }
+                    $('#api_result').html(JSON.stringify(result));
+                    $('#result-status').html('( SUCCESS )')
+                    $('#result-status').css('color', '#0f0');
+
+                } else {
+                  $('#result-status').html('( FAILED )')
+                  $('#result-status').css('color', '#f00');
+                  $('#api_result').html(res);
+                }
+            })
+          }
+
+          function callJava(){
+            api_url = $('#api_url').val();
+            if (api_url == '') {
+                alert('please input api url!');
+                return;
+            }
+
+            $('#api_result').html('');
+            $('#result-status').html('');
+            $('#result-status').css('color', '#000');
+            data = {
+              api_url: api_url
+            }
+
+            $.post('http://108.161.151.117:3033/api/calling_api_from_nodejs', data, function(res ,status){
+                result = res.res;
+                console.log(res, status);
+                console.log('result', result);
+                if (status == 'success'){
+                    res = JSON.stringify(result);
+
+                    if (res.includes('transactionId')){
+                        transactionlists = [];
+                        res = res.split('"transactionId":"');
+                        for (i in res){
+                          if (i == 0) continue;
+                          a = res[i].split('","transactionType"')[0];
+                          transactionlists.push(a);
+                        }
+                        console.log('transactionlists',transactionlists);
+                        $('#transaction-box').show();
+                        html = '';
+                        for (i in transactionlists){
+                          html = html + '<p style="color:red">'+transactionlists[i]+'</p>';
+                        }
+                        $('#transactions').html(html);
+                    }
+                    $('#api_result').html(JSON.stringify(result));
+                    $('#result-status').html('( SUCCESS )')
+                    $('#result-status').css('color', '#0f0');
+
+                } else {
+                  $('#result-status').html('( FAILED )')
+                  $('#result-status').css('color', '#f00');
+                  $('#api_result').html(res);
+                }
+            })
+          }
+
+          function callGolang(){
+            console.log('golang');
+            api_url = $('#api_url').val();
+            if (api_url == '' || !api_url.includes('http')) {
+                alert('please input api url!');
+                return;
+            }
+
+            $('#api_result').html('');
+            $('#result-status').html('');
+            $('#result-status').css('color', '#000');
+            data = {
+              "api_url": api_url
+            }
+
+
+            $.ajax({
+              url: 'http://88.208.216.161:3033/api/v1/blockchain/callingapi',
+              type: 'post',
+              dataType: 'json',
+              contentType: 'application/json',
+              success: function (res) {
+                console.log(res);
+                //res1 = JSON.stringify(res);
+                $('#api_result').html(JSON.stringify(res));
+                $('#result-status').html('( SUCCESS )')
+                $('#result-status').css('color', '#0f0');
+
+                if (res.includes('transactionId')){
+                    transactionlists = [];
+                    res = res.split('"transactionId":"');
+                    for (i in res){
+                      if (i == 0) continue;
+                      a = res[i].split('","transactionType"')[0];
+                      transactionlists.push(a);
+                    }
+                    console.log('transactionlists',transactionlists);
+                    $('#transaction-box').show();
+                    html = '';
+                    for (i in transactionlists){
+                      html = html + '<p style="color:red">'+transactionlists[i]+'</p>';
+                    }
+                    $('#transactions').html(html);
+                }
+
+              },
+              data: JSON.stringify(data)
+            });
+          }
+
+          function callErlang(){
+            console.log('erlang');
+            api_url = $('#api_url').val();
+            if (api_url == '') {
+                alert('please input api url!');
+                return;
+            }
+
+            $('#api_result').html('');
+            $('#result-status').html('');
+            $('#result-status').css('color', '#000');
+            data = {
+              api_url: api_url
+            }
+
+            $.get(api_url, function(res, status){
+              console.log(res, status);
+              result= res;
+              if (status == 'success'){
+                res = JSON.stringify(res);
+
+                if (res.includes('transactionId')){
+                    transactionlists = [];
+                    res = res.split('"transactionId":"');
+                    for (i in res){
+                      if (i == 0) continue;
+                      a = res[i].split('","transactionType"')[0];
+                      transactionlists.push(a);
+                    }
+                    console.log('transactionlists',transactionlists);
+                    $('#transaction-box').show();
+                    html = '';
+                    for (i in transactionlists){
+                      html = html + '<p style="color:red">'+transactionlists[i]+'</p>';
+                    }
+                    $('#transactions').html(html);
+                }
+                  $('#api_result').html(JSON.stringify(result));
+                  $('#result-status').html('( SUCCESS )')
+                  $('#result-status').css('color', '#0f0');
+              } else {
+                $('#result-status').html('( FAILED )')
+                $('#result-status').css('color', '#f00');
+                $('#api_result').html(res);
+              }
+            });
+          }
+        </script>
     </body>
 </html>
