@@ -102,7 +102,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content" style="width:100%; padding-top:50px">
                 <div class="top-left links">
-                  <a href="{{ url('/') }}">Home</a> / <a href="{{ url('/linuxone') }}" style="font-weight:bold; color:#000">IBM Cloud</a>
+                  <a href="{{ url('/') }}">Home</a> / <a href="{{ url('/ibm_cloud') }}" style="font-weight:bold; color:#000">IBM Cloud</a>
                 </div>
                 <div class="top-info">
                   <p>Nodejs Backend is running on http://18.191.207.249:3033</p>
@@ -111,7 +111,7 @@
                   <p>Java Backend is running on http://18.191.207.249:8080</p>
                 </div>
                 <div class="row" style="padding-top:10px">
-                    <img class="card-img-top" src="/images/linuxone.png" alt="Card image cap">
+                    <img class="card-img-top" src="/images/ibm_cloud.png" alt="Card image cap">
                 </div>
                 <div class="title m-b-md row" style="padding-top:0px; margin-top:15px">
                     BlueMix HyperLeger Fabric
