@@ -105,9 +105,9 @@
                   <a href="{{ url('/') }}">Home</a> / <a href="{{ url('/linuxone') }}" style="font-weight:bold; color:#000">IBM Cloud</a>
                 </div>
                 <div class="top-info">
-                  <p>Nodejs Backend is running on http://108.161.151.117:3033</p>
-                  <p>Golang Backend is running on http://88.208.216.161:3033</p>
-                  <p>Erlang Backend is running on http://18.219.10.175:8080</p>
+                  <p>Nodejs Backend is running on http://18.191.207.249:3033</p>
+                  <p>Golang Backend is running on http://18.191.207.249:3000</p>
+                  <p>Erlang Backend is running on http://18.191.207.249:8000</p>
                   <p>Java Backend is running on http://18.191.207.249:8080</p>
                 </div>
                 <div class="row" style="padding-top:10px">
@@ -147,9 +147,9 @@
                   <div class="col-sm-8" style="text-align:left;padding: 0px 50px 0px 20px">
                     <div class="row">
                       <div class="form-group" style="max-width:800px">
-                        <label for="label_api_url">Blockchain Composer Rest Api URL (ex: http://148.100.98.30:3000/api/system/historian (transaction lists))</label>
-                        <input type="text" class="form-control" id="api_url" name="api_url" placeholder="Enter api url" value="http://148.100.98.30:3000/api/system/historian">
-                        <small id="url_help" class="form-text">You can see api lists on http://148.100.98.30:3000/explorer/ (linuone composer rest server)</small>
+                        <label for="label_api_url">Blockchain Composer Rest Api URL (ex: https://vehicle-manufacture-rest-busy-gelada.mybluemix.net/api/Order (order lists))</label>
+                        <input type="text" class="form-control" id="api_url" name="api_url" placeholder="Enter api url" value="https://vehicle-manufacture-rest-busy-gelada.mybluemix.net/api/Order">
+                        <small id="url_help" class="form-text">You can see api lists on https://vehicle-manufacture-rest-busy-gelada.mybluemix.net/explorer/ (bluemix composer rest server)</small>
                       </div>
 
                       <div class="form-group" style="max-width:800px; padding-top:30px">
@@ -182,7 +182,7 @@
               api_url: api_url
             }
 
-            $.post('http://108.161.151.117:3033/api/calling_api_from_nodejs', data, function(res ,status){
+            $.post('http://18.191.207.249:3033', data, function(res ,status){
                 result = res.res;
                 console.log(res, status);
                 console.log('result', result);
