@@ -108,6 +108,7 @@
                   <p>Nodejs Backend is running on http://108.161.151.117:3033</p>
                   <p>Golang Backend is running on http://88.208.216.161:3033</p>
                   <p>Erlang Backend is running on http://18.219.10.175:8080</p>
+                  <p>Java Backend is running on http://18.191.207.249:8080</p>
                 </div>
                 <div class="row" style="padding-top:10px">
                     <img class="card-img-top" src="/images/linuxone.png" alt="Card image cap">
@@ -128,7 +129,7 @@
                       <button class="btn btn-primary" onclick="callErlang()"><img src="/images/erlang.png" style="width:35px; margin-right:5px"/> Call Api From Erlang</button>
                     </div>
                     <div class="row" style="padding-top:30px">
-                      <button class="btn btn-primary" onclick="callJava()" disabled style="height:58px"><img src="/images/java.jpg" style="width:35px; margin-right:5px"/> Call Api From Java</button>
+                      <button class="btn btn-primary" onclick="callJava()" style="height:58px"><img src="/images/java.jpg" style="width:35px; margin-right:5px"/> Call Api From Java</button>
                     </div>
                     <div class="row" style="padding-top:30px">
                       <button class="btn btn-primary" disabled><img src="/images/cics.png" style="width:35px; margin-right:5px" /> Call Api From CICS </button>
@@ -168,6 +169,55 @@
         <script>
           function callNodjs(){
             console.log('nodejs');
+            api_url = $('#api_url').val();
+            if (api_url == '') {
+                alert('please input api url!');
+                return;
+            }
+
+            $('#api_result').html('');
+            $('#result-status').html('');
+            $('#result-status').css('color', '#000');
+            data = {
+              api_url: api_url
+            }
+
+            $.post('http://108.161.151.117:3033/api/calling_api_from_nodejs', data, function(res ,status){
+                result = res.res;
+                console.log(res, status);
+                console.log('result', result);
+                if (status == 'success'){
+                    res = JSON.stringify(result);
+
+                    if (res.includes('transactionId')){
+                        transactionlists = [];
+                        res = res.split('"transactionId":"');
+                        for (i in res){
+                          if (i == 0) continue;
+                          a = res[i].split('","transactionType"')[0];
+                          transactionlists.push(a);
+                        }
+                        console.log('transactionlists',transactionlists);
+                        $('#transaction-box').show();
+                        html = '';
+                        for (i in transactionlists){
+                          html = html + '<p style="color:red">'+transactionlists[i]+'</p>';
+                        }
+                        $('#transactions').html(html);
+                    }
+                    $('#api_result').html(JSON.stringify(result));
+                    $('#result-status').html('( SUCCESS )')
+                    $('#result-status').css('color', '#0f0');
+
+                } else {
+                  $('#result-status').html('( FAILED )')
+                  $('#result-status').css('color', '#f00');
+                  $('#api_result').html(res);
+                }
+            })
+          }
+
+          function callJava(){
             api_url = $('#api_url').val();
             if (api_url == '') {
                 alert('please input api url!');
