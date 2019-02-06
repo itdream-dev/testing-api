@@ -108,7 +108,7 @@
                       <img class="card-img-top" src="/images/ibm_cloud.png" alt="Card image cap">
                       <div class="card-body">
                         <h5 class="card-title">HyperLeger Fabric Blockchain on IBM Cloud Server.</h5>
-                        <a href="/ibm_cloud" class="btn btn-primary" style="margin-top:30px;font-weight: bold" disabled>Go to Test</a>
+                        <a href="/ibm_cloud" class="btn btn-primary" style="margin-top:30px;font-weight: bold">Go to Test</a>
                       </div>
                     </div>
                   </div>
