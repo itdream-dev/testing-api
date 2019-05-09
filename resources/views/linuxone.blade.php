@@ -182,7 +182,7 @@
               api_url: api_url
             }
 
-            $.post('http://108.161.151.117:3033/api/calling_api_from_nodejs', data, function(res ,status){
+            $.post('http://148.100.245.200:3033/api/calling_api_from_nodejs', data, function(res ,status){
                 result = res.res;
                 console.log(res, status);
                 console.log('result', result);
