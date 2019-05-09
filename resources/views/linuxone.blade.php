@@ -147,9 +147,9 @@
                   <div class="col-sm-8" style="text-align:left;padding: 0px 50px 0px 20px">
                     <div class="row">
                       <div class="form-group" style="max-width:800px">
-                        <label for="label_api_url">Blockchain Composer Rest Api URL (ex: http://148.100.98.30:3000/api/system/historian (transaction lists))</label>
-                        <input type="text" class="form-control" id="api_url" name="api_url" placeholder="Enter api url" value="http://148.100.98.30:3000/api/system/historian">
-                        <small id="url_help" class="form-text">You can see api lists on http://148.100.98.30:3000/explorer/ (linuone composer rest server)</small>
+                        <label for="label_api_url">Blockchain Composer Rest Api URL (ex: http://148.100.245.200:3000/api/system/historian (transaction lists))</label>
+                        <input type="text" class="form-control" id="api_url" name="api_url" placeholder="Enter api url" value="http://148.100.245.200:3000/api/system/historian">
+                        <small id="url_help" class="form-text">You can see api lists on http://148.100.245.200:3000/explorer/ (linuone composer rest server)</small>
                       </div>
 
                       <div class="form-group" style="max-width:800px; padding-top:30px">
@@ -182,7 +182,7 @@
               api_url: api_url
             }
 
-            $.post('http://148.100.245.200:3033/api/calling_api_from_nodejs', data, function(res ,status){
+            $.post('http://18.223.149.254:3033/api/calling_api_from_nodejs', data, function(res ,status){
                 result = res.res;
                 console.log(res, status);
                 console.log('result', result);
@@ -231,7 +231,7 @@
               api_url: api_url
             }
 
-            $.post('http://108.161.151.117:3033/api/calling_api_from_nodejs', data, function(res ,status){
+            $.post('http://18.223.149.254:3033/api/calling_api_from_nodejs', data, function(res ,status){
                 result = res.res;
                 console.log(res, status);
                 console.log('result', result);
@@ -283,7 +283,7 @@
 
 
             $.ajax({
-              url: 'http://88.208.216.161:3033/api/v1/blockchain/callingapi',
+              url: 'http://18.223.149.254:3033/api/calling_api_from_nodejs',
               type: 'post',
               dataType: 'json',
               contentType: 'application/json',
