@@ -283,7 +283,7 @@
 
 
             $.ajax({
-              url: 'http://88.208.216.161:3033/api/v1/blockchain/callingapi',
+              url: 'http://18.223.149.254:3033/api/calling_api_from_nodejs',
               type: 'post',
               dataType: 'json',
               contentType: 'application/json',
