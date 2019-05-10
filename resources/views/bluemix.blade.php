@@ -114,7 +114,7 @@
                     <img class="card-img-top" src="/images/ibm_cloud.png" alt="Card image cap">
                 </div>
                 <div class="title m-b-md row" style="padding-top:0px; margin-top:15px">
-                    BlueMix HyperLeger Fabric
+                    HyperLeger Fabric
                 </div>
 
                 <div class="row" style="padding-top:30px">
